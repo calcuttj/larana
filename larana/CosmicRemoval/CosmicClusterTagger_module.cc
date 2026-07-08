@@ -55,7 +55,7 @@ cosmic::CosmicClusterTagger::CosmicClusterTagger(fhicl::ParameterSet const& p) :
   double const samplingRate = sampling_rate(clock_data);
   fClusterModuleLabel = p.get<std::string>("ClusterModuleLabel", "cluster");
   fTickLimit = p.get<int>("TickLimit", 0);
-  const double driftVelocity = detp.DriftVelocity(detp.Efield(), detp.Temperature()); // cm/us
+  const double driftVelocity = detp.DriftVelocity(detp.PerPlaneEfield(), detp.Temperature()); // cm/us
 
   fDetectorWidthTicks = 2 * tpc.HalfWidth() / (driftVelocity * samplingRate / 1000); // ~3200 for uB
   fMinTickDrift = p.get("MinTickDrift", 3200);

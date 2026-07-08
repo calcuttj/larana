@@ -75,7 +75,7 @@ cosmic::CosmicPFParticleTagger::CosmicPFParticleTagger(fhicl::ParameterSet const
   fTPCYBoundary = p.get<float>("TPCYBoundary", 5);
   fTPCZBoundary = p.get<float>("TPCZBoundary", 5);
 
-  const double driftVelocity = detp.DriftVelocity(detp.Efield(), detp.Temperature()); // cm/us
+  const double driftVelocity = detp.DriftVelocity(detp.PerPlaneEfield(), detp.Temperature()); // cm/us
 
   fDetectorWidthTicks =
     2 * tpc.HalfWidth() / (driftVelocity * fSamplingRate / 1000); // ~3200 for uB

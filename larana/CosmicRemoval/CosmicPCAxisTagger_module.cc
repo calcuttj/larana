@@ -88,7 +88,7 @@ cosmic::CosmicPCAxisTagger::CosmicPCAxisTagger(fhicl::ParameterSet const& p)
   auto const detector =
     art::ServiceHandle<detinfo::DetectorPropertiesService const>()->DataForJob(clock_data);
   const double driftVelocity =
-    detector.DriftVelocity(detector.Efield(), detector.Temperature()); // cm/us
+    detector.DriftVelocity(detector.PerPlaneEfield(), detector.Temperature()); // cm/us
 
   fDetectorWidthTicks =
     2 * tpc.HalfWidth() / (driftVelocity * fSamplingRate / 1000); // ~3200 for uB

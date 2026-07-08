@@ -137,7 +137,7 @@ void CRHitRemoval::beginJob()
     art::ServiceHandle<detinfo::DetectorPropertiesService const>()->DataForJob(clock_data);
 
   float const samplingRate = sampling_rate(clock_data);
-  float const driftVelocity = detp.DriftVelocity(detp.Efield(), detp.Temperature()); // cm/us
+  float const driftVelocity = detp.DriftVelocity(detp.PerPlaneEfield(), detp.Temperature()); // cm/us
 
   fDetectorWidthTicks = 2 * tpc.HalfWidth() / (driftVelocity * samplingRate / 1000);
   fMinTickDrift =
